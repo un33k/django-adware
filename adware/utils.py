@@ -2,6 +2,8 @@ import os
 
 from bs4 import BeautifulSoup
 
+from . import defaults as defs
+
 
 def get_template_path(name):
     """

@@ -23,7 +23,7 @@ class AdSense(models.Model):
     )
 
     code = models.TextField(
-        _("Adsense"),
+        _("Adsense Code"),
         blank=True,
         null=True,
         help_text=_('Your Google "Responsive" Adsense Code.'),
@@ -54,4 +54,4 @@ class AdSense(models.Model):
     )
 
     def __str__(self):
-        return 'Adsense: {} [p:{}, a:{}]'.format(self.profile.username, self.percentage, self.is_active)
+        return 'Adsense: {} [p:{}, a:{}]'.format(self.user.username, self.percentage, self.is_active)

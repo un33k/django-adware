@@ -1,5 +1,9 @@
-from .models import AdSense
+from django import forms
+from django.utils.translation import ugettext_lazy as _
 
+from toolware.utils.mixin import CleanSpacesMixin
+
+from .models import AdSense
 from . import utils as util
 
 

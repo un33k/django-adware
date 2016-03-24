@@ -1,4 +1,14 @@
+import os
+
 from bs4 import BeautifulSoup
+
+
+def get_template_path(name):
+    """
+    Given a template name, it returns the relative path from the template dir.
+    """
+    path = os.path.join(defs.ADWARE_TEMPLATE_BASE_DIR, name)
+    return path
 
 
 def get_adsense_attribute(html):

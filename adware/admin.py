@@ -1,6 +1,9 @@
-from .models import Ad
+from django.contrib import admin
 
-class AdAdmin(admin.ModelAdmin):
+from .models import AdSense
+
+
+class AdSenseAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "user",
@@ -10,4 +13,4 @@ class AdAdmin(admin.ModelAdmin):
         "is_active",
         "updated_at",
     ]
-admin.site.register(Ad, AdAdmin)
+admin.site.register(AdSense, AdSenseAdmin)

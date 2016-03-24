@@ -5,8 +5,8 @@ from django.core.validators import MinValueValidator
 from django.core.validators import MaxValueValidator
 from django.utils.encoding import python_2_unicode_compatible
 
-from .. import utils as util
-from .. import defaults as defs
+from . import utils as util
+from . import defaults as defs
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -42,7 +42,7 @@ class AdSense(models.Model):
     )
 
     percentage = models.PositiveIntegerField(
-        default=defs.PROFILEWARE_MINIMUM_SHARING_PERCENTAGE,
+        default=defs.ADWARE_MINIMUM_IMPRESSION_PERCENTAGE,
         validators=[MinValueValidator(1), MaxValueValidator(100)],
         help_text=_('Ad impression percentage (1-100).'),
     )

@@ -1,0 +1,3 @@
+from django.conf import settings
+
+ADWARE_MINIMUM_IMPRESSION_PERCENTAGE = getattr(settings, 'ADWARE_MINIMUM_IMPRESSION_PERCENTAGE', 30)

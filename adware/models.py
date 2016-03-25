@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext as _
@@ -47,11 +49,33 @@ class AdSense(models.Model):
         help_text=_('Ad impression percentage (1-100).'),
     )
 
-    is_active = models.BooleanField(
+    active = models.BooleanField(
         _('active'),
         default=True,
-        help_text=_('Inactive ads will not be shown.'),
+        help_text=_('Active shows your ads.'),
+    )
+
+    suspended = models.BooleanField(
+        _('suspended'),
+        default=False,
+        help_text=_('Suspended AdShare will not show ads. For admin use.'),
     )
 
     def __str__(self):
-        return 'Adsense: {} [p:{}, a:{}]'.format(self.user.username, self.percentage, self.is_active)
+        return 'Adsense: {} [p:{}, a:{}]'.format(self.user.username, self.percentage, self.active)
+
+    def get_info(self):
+        """
+        Returns ad client/slot or None
+        """
+        if not self.user.is_active or not self.is_active or self.is_suspended:
+            return None
+
+        if not self.code or not self.ad_client or not self.ad_slot:
+            return None
+
+        rand = random.randint(1, 100)
+        if rand > self.percentage:
+            return None
+
+        return self.ad_client, self.ad_slot

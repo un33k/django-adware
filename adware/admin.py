@@ -10,7 +10,8 @@ class AdSenseAdmin(admin.ModelAdmin):
         "percentage",
         "ad_client",
         "ad_slot",
-        "is_active",
+        "active",
+        "suspended",
         "updated_at",
     ]
 admin.site.register(AdSense, AdSenseAdmin)

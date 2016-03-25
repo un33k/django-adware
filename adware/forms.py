@@ -27,7 +27,7 @@ class AdSenseForm(CleanSpacesMixin, forms.ModelForm):
 
     class Meta:
         model = AdSense
-        fields = ('code',)
+        fields = ('code', 'active')
 
     def save(self, commit=True):
         instance = super(AdSenseForm, self).save(commit=False)

@@ -66,7 +66,7 @@ class AdSense(models.Model):
 
     def get_info(self):
         """
-        Returns ad client/slot or None
+        Returns ad client/slot or ''
         """
         info = (defs.ADWARE_DEFAULT_AD_CLIENT, defs.ADWARE_DEFAULT_AD_SLOT)
         if self.user.is_active and self.active and not self.suspended:

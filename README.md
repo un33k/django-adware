@@ -35,6 +35,9 @@ How to use
    ```python
    # Add `adware` to your INSTALLED_APPS.
    # Run `manage.py migrate`.
+   # In your settings.py set `ADWARE_TEMPLATE_BASE_DIR` to the directory for your template
+   # Add `adware` to your urls.py - ex: url(r'^account/ads/', include('adware.urls', namespace='adware'))
+   # `adense` & `form` will be passed to your template context for processing.
    ```
 
 Running the tests

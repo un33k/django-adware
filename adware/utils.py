@@ -17,7 +17,7 @@ def get_adsense_attribute(html):
     ad_client = ''
     ad_slot = ''
     if html:
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, "html.parser")
         tag = soup.find('ins')
         ad_client = tag.get('data-ad-client', '')
         ad_slot = tag.get('data-ad-slot', '')

@@ -68,14 +68,10 @@ class AdSense(models.Model):
         """
         Returns ad client/slot or None
         """
-        if not self.user.is_active or not self.is_active or self.is_suspended:
-            return None
-
-        if not self.code or not self.ad_client or not self.ad_slot:
-            return None
-
-        rand = random.randint(1, 100)
-        if rand > self.percentage:
-            return None
-
-        return self.ad_client, self.ad_slot
+        info = (defs.ADWARE_DEFAULT_AD_CLIENT, defs.ADWARE_DEFAULT_AD_SLOT)
+        if self.user.is_active and self.active and not self.suspended:
+            if self.code and self.ad_client and self.ad_slot:
+                rand = random.randint(1, 100)
+                if rand <= self.percentage:
+                    info = (self.ad_client, self.ad_slot)
+        return info

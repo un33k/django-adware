@@ -1,3 +1,9 @@
+## 0.0.3
+
+Enhancement:
+
+  - Add reward program for top viewed content
+
 ## 0.0.2
 
 Enhancement: (minor)

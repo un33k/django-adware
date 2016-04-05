@@ -64,7 +64,11 @@ class AdSense(models.Model):
     def __str__(self):
         return 'Adsense: {} [p:{}, a:{}]'.format(self.user.username, self.percentage, self.active)
 
-    def get_info(self):
+    def get_percentage(self, view_count):
+        percentage = util.get_percentage_per_view(self.percentage, view_count)
+        return percentage
+
+    def get_info(self, view_count=0):
         """
         Returns ad client/slot or ''
         """
@@ -72,6 +76,7 @@ class AdSense(models.Model):
         if self.user.is_active and self.active and not self.suspended:
             if self.code and self.ad_client and self.ad_slot:
                 rand = random.randint(1, 100)
-                if rand <= self.percentage:
+                percentage = self.get_percentage(view_count)
+                if rand <= percentage:
                     info = (self.ad_client, self.ad_slot)
         return info
